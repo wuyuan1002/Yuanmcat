@@ -47,8 +47,8 @@ public class Reader implements Handler {
                 Request request = new Request(this.selectionKey);
                 if (request.getInvalidHeaderException() == null) {
                     //是有效请求才注册写事件继续处理
-                    this.selectionKey.attach(new Sender(this.selectionKey, request));
                     this.selectionKey.interestOps(SelectionKey.OP_WRITE);
+                    this.selectionKey.attach(new Sender(this.selectionKey, request));
                 } else {
                     //否则返回400,错误的请求
                     HandleHttp.handleBadRequest(channel);
