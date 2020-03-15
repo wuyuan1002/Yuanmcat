@@ -21,7 +21,7 @@ public class SqlContainer {
     private final Map<String, SqlElement> sqlElements = new HashMap<>();
     
     /**
-     * 获取应用的 sql
+     * 添加应用的 sql
      */
     public static void addSqlElement(ClassLoader classLoader, Class aClass) {
         if (!(classLoader instanceof ServeltClassLoader && aClass.isAnnotationPresent(Table.class) && !aClass.isAnnotationPresent(Invalid.class))) {

@@ -62,7 +62,7 @@ public class Runners {
     }
     
     /**
-     * 获取应用的初始化器 CommandLineRunner
+     * 添加应用的初始化器 CommandLineRunner
      */
     public static void addCommandLineRunner(ClassLoader classLoader, Class aClass) {
         if (classLoader instanceof ServeltClassLoader && CommandLineRunner.class.isAssignableFrom(aClass) && !aClass.isAnnotationPresent(Invalid.class)) {
