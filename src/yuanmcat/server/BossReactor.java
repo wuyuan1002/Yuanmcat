@@ -20,8 +20,10 @@ import java.util.concurrent.ThreadFactory;
  * @date 2019/8/18
  */
 public class BossReactor extends AbstractReactor {
-    //worker
+    // worker
     private final WorkerReactor workerReactor;
+    // boss
+    private final Thread bossThread;
     
     BossReactor(int port) throws IOException, InterruptedException {
         //创建默认线程工厂
@@ -46,8 +48,8 @@ public class BossReactor extends AbstractReactor {
         this.workerReactor = new WorkerReactor(threadFactory);
         //创建并启动boss线程
         this.workerReactor.getWorkerThread().join(300);
-        Thread bossThread = threadFactory.newThread(this);
-        bossThread.start();
+        this.bossThread = threadFactory.newThread(this);
+        this.bossThread.start();
     }
     
     /**
@@ -58,6 +60,13 @@ public class BossReactor extends AbstractReactor {
         WorkerReactor.stopWorkerReactor();
         //中断boss线程
         Thread.currentThread().interrupt();
+    }
+    
+    /**
+     * 获取boss线程
+     */
+    protected Thread getBossThread() {
+        return this.bossThread;
     }
     
     /**
