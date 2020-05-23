@@ -32,6 +32,9 @@ public class WorkerReactor extends AbstractReactor {
     
     /**
      * 分发 -- 命令模式
+     *
+     * 都是调用了命令类 handler的execute方法，但是不同的命令对其的实现不同
+     * 由于读命令类和写命令类对其的实现不同，最终execute命令的行为也会不同
      */
     @Override
     protected void dispatch(SelectionKey key) {

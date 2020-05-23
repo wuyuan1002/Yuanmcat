@@ -37,6 +37,9 @@ public class Reader implements Handler {
     
     /**
      * 使用状态模式操作
+     *
+     * selectionKey的状态又读变成了写，根据状态的不同，为其attach了不同的 handler，
+     * 表面上看都是调用selectionKey的attachment的execute方法，但是它的行为会发生改变
      */
     @Override
     public void execute() {

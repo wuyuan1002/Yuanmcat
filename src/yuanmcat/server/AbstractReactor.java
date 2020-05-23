@@ -46,6 +46,8 @@ abstract class AbstractReactor implements Runnable {
     /**
      * 分发 -- 模板方法模式
      *
+     * 父类定义模板方法，具体的实现由子类决定
+     *
      * @param key 客户端监听事件的key
      */
     protected abstract void dispatch(SelectionKey key);
