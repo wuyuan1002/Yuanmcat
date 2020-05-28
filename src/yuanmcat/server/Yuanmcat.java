@@ -100,7 +100,7 @@ public class Yuanmcat {
      */
     private void createReactor() throws IOException, InterruptedException {
         BossReactor bossReactor = new BossReactor(this.port);
-        bossReactor.getBossThread().join(150);
+        // bossReactor.getBossThread().join(150);
     }
     
     public void start() {
